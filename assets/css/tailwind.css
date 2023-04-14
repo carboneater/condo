@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.theme-light {
+  --background: #f8f8f8;
+  --text: #313131;
+}
+.theme-dark {
+  --background: black;
+  --text: #ccc;
+}
+
+body {
+	@apply bg-black h-full
+}
