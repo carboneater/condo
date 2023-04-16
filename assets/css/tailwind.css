@@ -13,3 +13,8 @@
 body {
 	@apply bg-black h-full
 }
+
+input,
+select {
+  @apply bg-gray-950 text-neutral-400
+}
