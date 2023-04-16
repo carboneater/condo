@@ -9,3 +9,4 @@ export interface Action {
 }
 
 export interface Asset {name: string, id: number, unit?: number}
+export interface LogEntry {assetId: number, date: string, type: ActionType}
