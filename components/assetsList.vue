@@ -22,7 +22,11 @@ import { Asset } from '~/schema'
 		attrs: {
 			onCancel() {close()},
 			onCreate(asset: Omit<Asset, 'id'>) {
-				close(); console.log(asset)
+				close();
+				if (asset.unit === 0) {
+					delete asset.unit
+				}
+				console.log(asset)
 				props.assets.push({...asset, id: props.assets.length - 1})
 				//assets.push({...asset, id: assets.length - 1})
 				emit('asset', {...asset, id: props.assets.length - 1})
@@ -33,9 +37,6 @@ import { Asset } from '~/schema'
 
 	function appendAsset(asset: Omit<Asset, 'id'>) {
 		close(); console.log(asset)
-		//assets.push({...asset, id: assets.length - 1})
-		//console.log(assets)
-		//assets[8].unit = 12
 	}
 	function onNew(event: Event) {
 		open()
