@@ -6,7 +6,7 @@
 	<h1 class="text-xl">New Asset</h1>
 	<form>
 		<SimpleInput label="Name" type="text" v-model="newAsset.name" />
-		<SimpleInput label="Unit" type="number" v-model="newAsset.unit"/>
+		<SimpleInput label="Unit" type="number" v-model.number="newAsset.unit"/>
 	</form>
 	<div class="flex flex-row">
 		<button class="mt-1 ml-auto px-2 border border-emerald-600 rounded-lg" @click="emit('create', newAsset)">
