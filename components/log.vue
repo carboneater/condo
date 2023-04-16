@@ -1,25 +1,18 @@
 <template>
-	<div>
-		<div class="flex flex-row justify-between">
-			<h2>Maintenance Log</h2>
-			<button class="border border-amber-400 text-amber-400 px-1.5 rounded-md" @click="onNew">New Log Entry</button>
-		</div>
-		<div class="flex flex-col">
-			<div class="border border-solid border-slate-600 flex flex-row justify-between rounded-lg" v-for="entry in logs">
-				<div>{{ getActionTypeEmoji(entry.type) }}</div>
-				<div>{{ entry.asset }}</div>
-				<div>{{ entry.date }}</div>
-			</div>
+	<div class="flex flex-col">
+		<div class="border border-solid border-slate-600 flex flex-row justify-between rounded-lg" :class="entry.type" v-for="entry in props.logs">
+			<div>{{ getActionTypeEmoji(entry.type) }}</div>
+			<div>{{ props.assets[entry.assetId].name }}</div>
+			<div v-if="props.assets[entry.assetId].unit">{{props.assets[entry.assetId].unit}}</div>
+			<div>{{ entry.date }}</div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-	import {ModalsContainer, useModal} from 'vue-final-modal'
-	import newAssetModal from './newAssetModal.vue'
-	import type { ActionType } from '../schema'
+	import type { ActionType, Asset, LogEntry } from '../schema';
 
-	const {logs} = defineProps<{logs: {asset: string, date: string, type: ActionType}[]}>()
+	const props = defineProps<{assets: Record<number, Asset>, logs:LogEntry[]}>()
 
 	function getActionTypeEmoji(type: ActionType) {
 		switch(type) {
@@ -36,19 +29,13 @@
 				return '⁉'
 		}
 	}
-
-	const {open, close} = useModal({
-		attrs: {
-			onCancel() {close()},
-			onCreate() {
-				close();
-			}
-		},
-		component: newAssetModal
-	})
-
-	function onNew() {}
 </script>
 
 <style scoped>
+	.maintenance {
+		@apply border-amber-600 text-amber-600
+	}
+	.repair {
+		@apply border-red-600 text-red-600
+	}
 </style>
