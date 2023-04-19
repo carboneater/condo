@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ModalsContainer, useModal } from "vue-final-modal";
+import { useModal } from "vue-final-modal";
 import newAssetModal from "./newAssetModal.vue";
 import { Asset } from "~/schema";
 
@@ -36,9 +36,8 @@ const { open, close } = useModal({
       if (asset.unit === 0) {
         delete asset.unit;
       }
-      console.log(asset);
+
       props.assets.push({ ...asset, id: props.assets.length - 1 });
-      //assets.push({...asset, id: assets.length - 1})
       emit("asset", { ...asset, id: props.assets.length - 1 });
     },
   },
