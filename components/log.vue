@@ -16,28 +16,13 @@
 </template>
 
 <script setup lang="ts">
-import type { ActionType, Asset, LogEntry } from "../schema";
+import type { Asset, LogEntry } from "../schema";
+import { getActionTypeEmoji } from "../shared";
 
 const props = defineProps<{
   assets: Record<number, Asset>;
   logs: LogEntry[];
 }>();
-
-function getActionTypeEmoji(type: ActionType) {
-  switch (type) {
-    case "inspection":
-      return "🔍";
-      break;
-    case "maintenance":
-      return "🛠️";
-      break;
-    case "repair":
-      return "🧰";
-      break;
-    default:
-      return "⁉";
-  }
-}
 </script>
 
 <style scoped>
