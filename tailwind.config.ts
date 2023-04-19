@@ -1,14 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [],
-	theme: {
+  theme: {
     extend: {
       colors: {
-        themeBackground: 'var(--background)',
-        themeText: 'var(--text)',
+        themeBackground: "var(--background)",
+        themeText: "var(--text)",
       },
     },
-	},
+  },
   plugins: [],
-}
-
+};
