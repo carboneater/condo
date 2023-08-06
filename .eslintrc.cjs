@@ -14,6 +14,6 @@ module.exports = {
     "@nuxtjs/eslint-config-typescript",
     "plugin:prettier/recommended",
   ],
-  plugins: ["@typescript-eslint/eslint-plugin"],
+  plugins: ["@typescript-eslint/eslint-plugin", "vitest"],
   rules: {},
 };
