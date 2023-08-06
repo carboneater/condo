@@ -12,7 +12,8 @@ export const assets = ref<Record<number, Asset>>(
       [1, 2, 3, 4, 5, 6, 7, 8].flatMap((unit) => [
         { id: unit * 10, name: "Front Balcony Door", unit },
         { id: unit * 10 + 1, name: "Back Balcony Door", unit },
-        { id: unit * 10 + 2, name: "Water Heater", unit },
+        { id: unit * 10 + 2, name: "Smoke Detector", unit },
+        { id: unit * 10 + 3, name: "Water Heater", unit },
       ])
     ),
     "id"

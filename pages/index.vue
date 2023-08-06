@@ -2,13 +2,7 @@
   <log
     :actionTypes="actionTypes"
     :assets="Object.values(assets)"
-    :logs="
-      logs.map(({ assetId, date, type }) => ({
-        assetId: assets[assetId].name,
-        date,
-        type,
-      }))
-    "
+    :logs="logs"
   />
   <assetsList :assets="Object.values(assets)" />
 </template>
