@@ -27,6 +27,7 @@ describe("Logs", () => {
     });
     expect(wrapper.vm).toBeTruthy();
     expect(wrapper.text()).to.contain("Test");
+    expect(wrapper.text()).to.contain("2023-01-01");
     expect(wrapper.text()).not.to.contain("Fail");
   });
 });
