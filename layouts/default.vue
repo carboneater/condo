@@ -2,9 +2,10 @@
   <header class="bg-black flex text-slate-600">
     <!--<h1>Entretien</h1>-->
     <nav class="flex flex-row justify-between">
-      <NuxtLink class="font-bold pr-4" to="/">Home</NuxtLink>
-      <NuxtLink class="px-4" to="/assets">Assets</NuxtLink>
-      <NuxtLink class="px-4" to="/logs">Logs</NuxtLink>
+      <NuxtLink class="font-bold pr-4" to="/">🛠️📰</NuxtLink>
+      <NuxtLink class="px-4" to="/assets">⚒️</NuxtLink>
+      <NuxtLink class="px-4" to="/logs">🗒️</NuxtLink>
+      <NuxtLink class="px-4" to="/upcoming">🗓️</NuxtLink>
       <!--<NuxtLink class="px-4" to="/providers">Providers</NuxtLink>-->
     </nav>
   </header>

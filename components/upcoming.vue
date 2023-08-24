@@ -1,7 +1,9 @@
 <template>
+  <h2 class="font-bold pt-1.5">Upcoming Maintenance</h2>
   <div class="flex flex-col">
     <div
-      class="border border-solid border-slate-600 flex-row justify-between rounded-lg"
+      class="border border-solid border-slate-600 flex flex-row justify-between rounded-lg"
+      :class="entry.type"
       v-for="entry in props.upcoming"
     >
       <div>{{ getActionTypeEmoji(entry.type) }}</div>
@@ -24,3 +26,15 @@ const props = defineProps<{
   upcoming: UpcomingEntries[];
 }>();
 </script>
+
+<style scoped>
+.inspection {
+  @apply border-sky-600 text-sky-600;
+}
+.maintenance {
+  @apply border-amber-600 text-amber-600;
+}
+.repair {
+  @apply border-red-600 text-red-600;
+}
+</style>

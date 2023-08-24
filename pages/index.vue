@@ -1,11 +1,11 @@
 <template>
   <upcoming :assets="assets" :upcoming="upcomingTasks(assets, logs)" />
-  <!--<log
+  <log
     :actionTypes="actionTypes"
     :assets="Object.values(assets)"
     :logs="logs"
   />
-  <assetsList :assets="Object.values(assets)" />-->
+  <assetsList :assets="Object.values(assets)" />
 </template>
 
 <script setup lang="ts">

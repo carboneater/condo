@@ -4,6 +4,7 @@ export type ActionType = "inspection" | "maintenance" | "repair";
 export type TTLKeys = ActionType | "lifetime";
 
 export interface Asset {
+  acquisitionDate: Temporal.Instant;
   name: string;
   id: number;
   ttl?: TTL;
@@ -12,7 +13,7 @@ export interface Asset {
 
 export interface LogEntry {
   assetId: number;
-  date: string;
+  date: Temporal.Instant;
   type: ActionType;
 }
 

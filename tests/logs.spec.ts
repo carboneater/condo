@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
+import { Temporal } from "@js-temporal/polyfill";
 
 import Logs from "../components/log.vue";
 import { Asset, LogEntry } from "schema";
@@ -11,15 +12,16 @@ describe("Logs", () => {
       props: {
         assets: {
           1: {
+            acquisitionDate: Temporal.Now.instant(),
             id: 1,
             name: "Test",
           },
-          2: { id: 2, name: "Fail" },
+          2: { acquisitionDate: Temporal.Now.instant(), id: 2, name: "Fail" },
         } as Record<number, Asset>,
         logs: [
           {
             assetId: 1,
-            date: "2023-01-01",
+            date: Temporal.Instant.from("2023-01-01T00:00:00Z"),
             type: "inspection",
           },
         ] as LogEntry[],

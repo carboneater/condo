@@ -34,7 +34,15 @@ export function upcomingTasks(
   assets: Record<number, Asset>,
   logs: LogEntry[]
 ): UpcomingEntries[] {
-  const activeLogs = stillValidLogEntries({ assets, logs });
+  const activeLogs = stillValidLogEntries({ assets, logs }).concat(
+    Object.values(assets)
+      .filter(({ acquisitionDate }) => acquisitionDate)
+      .map(({ acquisitionDate, id }) => ({
+        assetId: id,
+        date: acquisitionDate,
+        type: "lifetime" as ActionType,
+      }))
+  );
   const assetsWithTTLs = filterAssetsWithTTLs(assets);
 
   const upcomingMap: Record<
@@ -125,8 +133,11 @@ function stillValidLogEntries({
   });
 }
 
-function ttlExpiry(date: string, ttl: number | string): Temporal.Instant {
-  return Temporal.Instant.from(date).add(
+function ttlExpiry(
+  date: Temporal.Instant,
+  ttl: number | string
+): Temporal.Instant {
+  return date.add(
     Temporal.Duration.from({
       milliseconds: typeof ttl === "number" ? ttl : ms(ttl),
     })

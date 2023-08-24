@@ -1,4 +1,5 @@
 <template>
+  <h2 class="font-bold pt-1.5">Maintenance Logs</h2>
   <div class="flex flex-col">
     <div
       class="border border-solid border-slate-600 flex flex-row justify-between rounded-lg"
