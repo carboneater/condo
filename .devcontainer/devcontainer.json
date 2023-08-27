@@ -9,16 +9,20 @@
 	}*/
 
   // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {
+  /*"features": {
     "ghcr.io/devcontainers-contrib/features/typescript": {}
-},
-"customizations": {
-	"vscode": {
-		"extensions": [
-			"Vue.volar"
-		]
-	}
-}
+  },*/
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "matijao.vue-nuxt-snippets",
+        "ms-azuretools.vscode-docker",
+        "Vue.volar",
+        "Vue.vscode-typescript-vue-plugin"
+      ]
+    }
+  }
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
