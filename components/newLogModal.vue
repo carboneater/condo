@@ -45,15 +45,20 @@
 
 <script setup lang="ts">
 import { VueFinalModal } from "vue-final-modal";
-import { ActionType, Asset } from "~/schema";
+import { ActionType, Asset, LogEntry } from "~/schema";
 import { getActionTypeEmoji } from "../shared";
 
 const emit = defineEmits(["cancel", "new"]);
-const props = defineProps<{ actionTypes: ActionType[]; assets: Asset[] }>();
+const props = defineProps<{
+  actionTypes: ActionType[];
+  assets: Asset[];
+  seed?: Partial<Omit<LogEntry, "date">>;
+}>();
 const entry = {
   assetId: 0,
   date: new Date().toISOString().substring(0, 10),
   type: "inspection",
+  ...props.seed,
 };
 
 function getAssetString(asset: Asset) {

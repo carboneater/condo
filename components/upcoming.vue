@@ -13,18 +13,50 @@
         }})
       </div>
       <div>{{ entry.instant.toString() }}</div>
+      <button
+        class="border border-green-400 text-green-400 px-1.5 rounded-md"
+        @click="
+          openSeeded({ assetId: entry.assetId, type: entry.type as ActionType })
+        "
+      >
+        ✅
+      </button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { Asset, UpcomingEntries } from "../schema";
+import { useModal } from "vue-final-modal";
+import NewLogModal from "../components/newLogModal.vue";
+import type { ActionType, Asset, LogEntry, UpcomingEntries } from "../schema";
 import { getActionTypeEmoji } from "../shared";
 
 const props = defineProps<{
   assets: Record<number, Asset>;
   upcoming: UpcomingEntries[];
 }>();
+
+import { actionTypes, logs } from "../data";
+
+function openSeeded(seed?: Partial<Omit<LogEntry, "date">>) {
+  const { open, close } = useModal({
+    attrs: {
+      assets: Object.values(props.assets),
+      actionTypes,
+      onCancel() {
+        close();
+      },
+      onNew(log: LogEntry) {
+        close();
+        console.log(log);
+        logs.value.push(log);
+      },
+      seed,
+    },
+    component: NewLogModal,
+  });
+  open();
+}
 </script>
 
 <style scoped>
