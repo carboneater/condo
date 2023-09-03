@@ -7,11 +7,17 @@
     <form>
       <SimpleInput label="Name" type="text" v-model="newAsset.name" />
       <SimpleInput label="Unit" type="number" v-model.number="newAsset.unit" />
+      <SimpleInput
+        label="Acquisition Date"
+        :max="Temporal.Now.plainDateISO()"
+        type="date"
+        v-model="newAsset.acquisitionDate"
+      ></SimpleInput>
     </form>
     <div class="flex flex-row">
       <button
         class="mt-1 ml-auto px-2 border border-emerald-600 rounded-lg"
-        @click="emit('create', newAsset)"
+        @click="emit('create', toAsset(newAsset))"
       >
         Create
       </button>
@@ -26,7 +32,28 @@
 </template>
 
 <script setup lang="ts">
+import { Asset } from "../schema";
 import { VueFinalModal } from "vue-final-modal";
+import { Temporal } from "@js-temporal/polyfill";
 const emit = defineEmits(["cancel", "create"]);
-const newAsset = { name: "", unit: 0 };
+const curDate = Temporal.Now.plainDateISO();
+const newAsset = { acquisitionDate: curDate.toString(), name: "", unit: 0 };
+
+function toAsset({
+  acquisitionDate,
+  name,
+  unit,
+}: {
+  acquisitionDate: string;
+  name: string;
+  unit: number;
+}): Omit<Asset, "id"> {
+  return {
+    acquisitionDate: Temporal.PlainDate.from(acquisitionDate)
+      .toZonedDateTime(Intl.DateTimeFormat().resolvedOptions().timeZone)
+      .toInstant(),
+    name,
+    unit,
+  };
+}
 </script>

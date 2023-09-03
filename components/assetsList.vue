@@ -10,10 +10,20 @@
   </div>
   <div class="flex flex-col">
     <div
-      class="border border-solid border-slate-600 flex-row justify-between rounded-lg"
+      class="border border-solid border-slate-600 flex flex-row justify-between rounded-lg"
       v-for="asset in props.assets"
     >
       <div>{{ asset.name }} ({{ asset.unit ?? "Shared" }})</div>
+      <div>
+        {{
+          asset.acquisitionDate
+            .toZonedDateTimeISO(
+              Intl.DateTimeFormat().resolvedOptions().timeZone
+            )
+            .toPlainDate()
+            .toString()
+        }}
+      </div>
     </div>
   </div>
 </template>
