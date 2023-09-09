@@ -1,6 +1,11 @@
 import { Temporal } from "@js-temporal/polyfill";
 
-export type ActionType = "inspection" | "maintenance" | "repair";
+export type ActionType =
+  | "inspection"
+  | "maintenance"
+  | "new"
+  | "repair"
+  | "thrash";
 export type TTLKeys = ActionType | "lifetime";
 
 export interface Asset {

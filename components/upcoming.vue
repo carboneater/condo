@@ -16,10 +16,20 @@
       <button
         class="border border-green-400 text-green-400 px-1.5 rounded-md"
         @click="
-          openSeeded({ assetId: entry.assetId, type: entry.type as ActionType })
+          openSeeded({
+            assetId: entry.assetId,
+            type: entry.type === 'lifetime' ? 'new' : entry.type,
+          })
         "
       >
-        ✅
+        {{ entry.type === "lifetime" ? "✨" : "✅" }}
+      </button>
+      <button
+        class="border border-red-400 text-red-400 px-1.5 rounded-md"
+        @click="openSeeded({ assetId: entry.assetId, type: 'thrash' })"
+        v-if="entry.type === 'lifetime'"
+      >
+        🗑️
       </button>
     </div>
   </div>

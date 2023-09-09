@@ -22,9 +22,13 @@ export function getActionTypeEmoji(type: TTLKeys) {
     case "maintenance":
       return "🛠️";
       break;
+    case "new":
+      return "✨";
     case "repair":
       return "🧰";
       break;
+    case "thrash":
+      return "🗑️";
     default:
       return "⁉";
   }

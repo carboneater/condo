@@ -93,7 +93,9 @@ export const assets = ref<Record<number, Asset>>(
 export const actionTypes: ActionType[] = [
   "inspection",
   "maintenance",
+  "new",
   "repair",
+  "thrash",
 ];
 export const logs = ref<LogEntry[]>([
   {
