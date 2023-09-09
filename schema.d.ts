@@ -10,8 +10,9 @@ export type TTLKeys = ActionType | "lifetime";
 
 export interface Asset {
   acquisitionDate: Temporal.Instant;
-  name: string;
+  decomissionDate?: Temporal.PlainDate;
   id: number;
+  name: string;
   ttl?: TTL;
   unit?: number;
 }

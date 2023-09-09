@@ -17,6 +17,9 @@
       <div>
         {{ instantToISODateString(asset.acquisitionDate) }}
       </div>
+      <div v-if="asset.decomissionDate">
+        {{ asset.decomissionDate }}
+      </div>
     </div>
   </div>
 </template>

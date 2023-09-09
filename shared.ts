@@ -51,8 +51,12 @@ export function upcomingTasks(
   assets: Record<number, Asset>,
   logs: LogEntry[]
 ): UpcomingEntries[] {
-  const activeLogs = stillValidLogEntries({ assets, logs }).concat(
-    Object.values(assets)
+  const activeAssets = nonDecomissionnedAssets(assets);
+  const activeLogs = stillValidLogEntries({
+    assets: activeAssets,
+    logs,
+  }).concat(
+    Object.values(activeAssets)
       .filter(({ acquisitionDate }) => acquisitionDate)
       .map(({ acquisitionDate, id }) => ({
         assetId: id,
@@ -117,6 +121,14 @@ function filterAssetsWithTTLs(assets: AssetMap): AssetMap {
   return Object.fromEntries(
     Object.entries(assets).filter(
       ([id, { ttl }]) => ttl && Object.values(ttl).some((value) => value)
+    )
+  );
+}
+
+function nonDecomissionnedAssets(assets: AssetMap): AssetMap {
+  return Object.fromEntries(
+    Object.entries(assets).filter(
+      ([id, { decomissionDate }]) => !decomissionDate
     )
   );
 }
