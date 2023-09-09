@@ -29,7 +29,7 @@
     <div class="flex flex-row justify-between">
       <button
         class="mt-1 ml-auto px-2 border border-amber-600 rounded-lg"
-        @click="emit('new', entry)"
+        @click="emit('new', toLogEntry(entry))"
       >
         Create
       </button>
@@ -46,7 +46,8 @@
 <script setup lang="ts">
 import { VueFinalModal } from "vue-final-modal";
 import { ActionType, Asset, LogEntry } from "~/schema";
-import { getActionTypeEmoji } from "../shared";
+import { getActionTypeEmoji, instantFromISODateString } from "../shared";
+import NewAsset from "./newAsset.vue";
 
 const emit = defineEmits(["cancel", "new"]);
 const props = defineProps<{
@@ -54,7 +55,7 @@ const props = defineProps<{
   assets: Asset[];
   seed?: Partial<Omit<LogEntry, "date">>;
 }>();
-const entry = {
+const entry: Omit<LogEntry, "date"> & { date: string } = {
   assetId: 0,
   date: new Date().toISOString().substring(0, 10),
   type: "inspection",
@@ -63,6 +64,22 @@ const entry = {
 
 function getAssetString(asset: Asset) {
   return `${asset.name}${asset.unit ? ` (${asset.unit})` : ""}`;
+}
+
+function toLogEntry({
+  assetId,
+  date,
+  type,
+}: {
+  assetId: number;
+  date: string;
+  type: ActionType;
+}): LogEntry {
+  return {
+    assetId,
+    date: instantFromISODateString(date),
+    type,
+  };
 }
 </script>
 
