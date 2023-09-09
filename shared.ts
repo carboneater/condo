@@ -30,6 +30,19 @@ export function getActionTypeEmoji(type: TTLKeys) {
   }
 }
 
+export function instantFromISODateString(date: string): Temporal.Instant {
+  return Temporal.PlainDate.from(date)
+    .toZonedDateTime(Intl.DateTimeFormat().resolvedOptions().timeZone)
+    .toInstant();
+}
+
+export function instantToISODateString(instant: Temporal.Instant): string {
+  return instant
+    .toZonedDateTimeISO(Intl.DateTimeFormat().resolvedOptions().timeZone)
+    .toPlainDate()
+    .toString();
+}
+
 export function upcomingTasks(
   assets: Record<number, Asset>,
   logs: LogEntry[]
