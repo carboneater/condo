@@ -1,5 +1,6 @@
-import { ActionType } from "schema";
-import { getActionTypeEmoji } from "shared";
+import { Temporal } from "@js-temporal/polyfill";
+import { ActionType } from "../schema";
+import { getActionTypeEmoji, instantToISODateString } from "../shared";
 import { describe, expect, test } from "vitest";
 
 describe("GetActionTypeEmoji", () => {
@@ -11,4 +12,8 @@ describe("GetActionTypeEmoji", () => {
   test("Repair", () => expect(getActionTypeEmoji("repair")).to.equal("🧰"));
   test("Unknown", () =>
     expect(getActionTypeEmoji("unknown" as ActionType)).to.equal("⁉"));
+});
+
+describe("instantToDateString", () => {
+  test(() => instantToISODateString(Temporal.Now.instant()));
 });
