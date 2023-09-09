@@ -12,7 +12,7 @@
           assets[entry.assetId].unit ?? "Shared"
         }})
       </div>
-      <div>{{ entry.instant.toString() }}</div>
+      <div>{{ instantToISODateString(entry.instant) }}</div>
       <button
         class="border border-green-400 text-green-400 px-1.5 rounded-md"
         @click="
@@ -29,7 +29,7 @@
 import { useModal } from "vue-final-modal";
 import NewLogModal from "../components/newLogModal.vue";
 import type { ActionType, Asset, LogEntry, UpcomingEntries } from "../schema";
-import { getActionTypeEmoji } from "../shared";
+import { getActionTypeEmoji, instantToISODateString } from "../shared";
 
 const props = defineProps<{
   assets: Record<number, Asset>;

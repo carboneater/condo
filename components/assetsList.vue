@@ -15,14 +15,7 @@
     >
       <div>{{ asset.name }} ({{ asset.unit ?? "Shared" }})</div>
       <div>
-        {{
-          asset.acquisitionDate
-            .toZonedDateTimeISO(
-              Intl.DateTimeFormat().resolvedOptions().timeZone
-            )
-            .toPlainDate()
-            .toString()
-        }}
+        {{ instantToISODateString(asset.acquisitionDate) }}
       </div>
     </div>
   </div>
@@ -32,6 +25,7 @@
 import { useModal } from "vue-final-modal";
 import newAssetModal from "./newAssetModal.vue";
 import { Asset } from "~/schema";
+import { instantToISODateString } from "~/shared";
 
 const emit = defineEmits(["asset", "click"]);
 const props = defineProps<{ assets: Asset[] }>();

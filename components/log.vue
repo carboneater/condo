@@ -11,14 +11,14 @@
       <div v-if="props.assets[entry.assetId].unit">
         {{ props.assets[entry.assetId].unit }}
       </div>
-      <div>{{ entry.date }}</div>
+      <div>{{ instantToISODateString(entry.date) }}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Asset, LogEntry } from "../schema";
-import { getActionTypeEmoji } from "../shared";
+import { getActionTypeEmoji, instantToISODateString } from "../shared";
 
 const props = defineProps<{
   assets: Record<number, Asset>;
