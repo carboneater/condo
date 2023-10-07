@@ -6,7 +6,9 @@
       :class="entry.type"
       v-for="entry in props.upcoming"
     >
-      <div>{{ getActionTypeEmoji(entry.type) }}</div>
+      <div class="tooltip-anchor" :title="entry.type">
+        {{ getActionTypeEmoji(entry.type) }}
+      </div>
       <div>
         {{ assets[entry.assetId].name }} ({{
           assets[entry.assetId].unit ?? "Shared"
