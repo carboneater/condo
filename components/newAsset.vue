@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Asset } from "../schema";
+import type { Asset } from "~/schema";
 import { Temporal } from "@js-temporal/polyfill";
 defineProps<{
   seed: Omit<Asset, "acquisitionDate" | "id"> & { acquisitionDate: string };

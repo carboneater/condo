@@ -45,7 +45,7 @@
 
 <script setup lang="ts">
 import { VueFinalModal } from "vue-final-modal";
-import { ActionType, Asset, LogEntry } from "~/schema";
+import type { ActionType, Asset, LogEntry } from "~/schema";
 import { getActionTypeEmoji, instantFromISODateString } from "../shared";
 import NewAsset from "./newAsset.vue";
 
