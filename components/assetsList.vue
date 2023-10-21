@@ -1,33 +1,41 @@
 <template>
-  <div class="flex flex-row justify-between">
-    <h2 class="font-bold pt-1.5">Assets List</h2>
-    <button
-      class="border border-emerald-600 text-emerald-600 px-1.5 rounded-md"
-      @click="onNew"
-    >
-      New
-    </button>
-  </div>
-  <div class="flex flex-col">
-    <div
-      class="border border-solid border-slate-600 flex flex-row justify-between rounded-lg"
-      v-for="asset in props.assets"
-    >
-      <div>{{ asset.name }} ({{ asset.unit ?? "Shared" }})</div>
-      <div>
-        {{ instantToISODateString(asset.acquisitionDate) }}
-      </div>
-      <div v-if="asset.decomissionDate">
-        {{ asset.decomissionDate }}
-      </div>
+  <div class="w-fit">
+    <div class="justify-between w-fit">
+      <h2 class="font-bold pt-1.5 w-fit">Assets List</h2>
+      <button
+        class="border border-emerald-600 text-emerald-600 px-1.5 rounded-md"
+        @click="onNew"
+      >
+        New
+      </button>
     </div>
+    <table>
+      <thead>
+        <th>Asset</th>
+        <th>Unit</th>
+        <th>Acquisition</th>
+      </thead>
+      <tr
+        class="border border-solid border-slate-600 rounded-lg"
+        v-for="asset in props.assets"
+      >
+        <td>{{ asset.name }}</td>
+        <td>{{ asset.unit ?? "Shared" }}</td>
+        <td>
+          {{ instantToISODateString(asset.acquisitionDate) }}
+        </td>
+        <td v-if="asset.decomissionDate">
+          {{ asset.decomissionDate }}
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useModal } from "vue-final-modal";
 import newAssetModal from "./newAssetModal.vue";
-import { Asset } from "~/schema";
+import type { Asset } from "~/schema";
 import { instantToISODateString } from "~/shared";
 
 const emit = defineEmits(["asset", "click"]);

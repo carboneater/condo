@@ -1,11 +1,18 @@
 <template>
-  <upcoming :assets="assets" :upcoming="upcomingTasks(assets, logs)" />
-  <log
-    :actionTypes="actionTypes"
-    :assets="Object.values(assets)"
-    :logs="logs"
-  />
-  <assetsList :assets="Object.values(assets)" />
+  <div class="flex flex-row justify-between">
+    <upcoming
+      :assets="assets"
+      :upcoming="upcomingTasks(assets, logs)"
+      class="w-fit"
+    />
+    <log
+      :actionTypes="actionTypes"
+      :assets="Object.values(assets)"
+      class="w-fit"
+      :logs="logs"
+    />
+    <assetsList :assets="Object.values(assets)" class="w-fit" />
+  </div>
 </template>
 
 <script setup lang="ts">

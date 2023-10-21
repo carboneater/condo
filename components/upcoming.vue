@@ -1,48 +1,50 @@
 <template>
-  <h2 class="font-bold pt-1.5">Upcoming Maintenance</h2>
-  <table>
-    <thead>
-      <th></th>
-      <th>Asset</th>
-      <th>Due Date</th>
-      <th></th>
-    </thead>
-    <tr
-      class="border border-solid border-slate-600 rounded-lg"
-      :class="entry.type"
-      v-for="entry in props.upcoming"
-    >
-      <td :title="entry.type">
-        {{ getActionTypeEmoji(entry.type) }}
-      </td>
-      <td>
-        {{ assets[entry.assetId].name }} ({{
-          assets[entry.assetId].unit ?? "Shared"
-        }})
-      </td>
-      <td>{{ instantToISODateString(entry.instant) }}</td>
-      <td>
-        <button
-          class="border border-green-400 text-green-400 px-1.5 rounded-md"
-          @click="
-            openSeeded({
-              assetId: entry.assetId,
-              type: entry.type === 'lifetime' ? 'new' : entry.type,
-            })
-          "
-        >
-          {{ entry.type === "lifetime" ? "✨" : "✅" }}
-        </button>
-        <button
-          class="border border-red-400 text-red-400 px-1.5 rounded-md"
-          @click="openSeeded({ assetId: entry.assetId, type: 'thrash' })"
-          v-if="entry.type === 'lifetime'"
-        >
-          🗑️
-        </button>
-      </td>
-    </tr>
-  </table>
+  <div class="w-fit">
+    <h2 class="font-bold pt-1.5 w-fit">Upcoming Maintenance</h2>
+    <table>
+      <thead>
+        <th></th>
+        <th>Asset</th>
+        <th>Due Date</th>
+        <th></th>
+      </thead>
+      <tr
+        class="border border-solid border-slate-600 rounded-lg"
+        :class="entry.type"
+        v-for="entry in props.upcoming"
+      >
+        <td :title="entry.type">
+          {{ getActionTypeEmoji(entry.type) }}
+        </td>
+        <td>
+          {{ assets[entry.assetId].name }} ({{
+            assets[entry.assetId].unit ?? "Shared"
+          }})
+        </td>
+        <td>{{ instantToISODateString(entry.instant) }}</td>
+        <td>
+          <button
+            class="border border-green-400 text-green-400 px-1.5 rounded-md"
+            @click="
+              openSeeded({
+                assetId: entry.assetId,
+                type: entry.type === 'lifetime' ? 'new' : entry.type,
+              })
+            "
+          >
+            {{ entry.type === "lifetime" ? "✨" : "✅" }}
+          </button>
+          <button
+            class="border border-red-400 text-red-400 px-1.5 rounded-md"
+            @click="openSeeded({ assetId: entry.assetId, type: 'thrash' })"
+            v-if="entry.type === 'lifetime'"
+          >
+            🗑️
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script lang="ts" setup>
