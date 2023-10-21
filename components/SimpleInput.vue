@@ -3,7 +3,10 @@
     <label v-if="label">{{ label }}</label>
     <input
       class="bg-gray-950 field text-neutral-400"
-      @input="event => $emit('update:modelValue', (event.target as any|null)?.value)"
+      @input="
+        (event) =>
+          $emit('update:modelValue', (event.target as any | null)?.value)
+      "
       :placeholder="label"
       :value="modelValue"
       v-bind="$attrs"

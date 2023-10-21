@@ -49,7 +49,7 @@ export function instantToISODateString(instant: Temporal.Instant): string {
 
 export function upcomingTasks(
   assets: Record<number, Asset>,
-  logs: LogEntry[]
+  logs: LogEntry[],
 ): UpcomingEntries[] {
   const activeAssets = nonDecomissionnedAssets(assets);
   const activeLogs = stillValidLogEntries({
@@ -62,7 +62,7 @@ export function upcomingTasks(
         assetId: id,
         date: acquisitionDate,
         type: "lifetime" as ActionType,
-      }))
+      })),
   );
   const assetsWithTTLs = filterAssetsWithTTLs(assets);
 
@@ -93,8 +93,8 @@ export function upcomingTasks(
     .filter((v) => v.ttl)
     .flatMap((v) =>
       Object.entries(v.ttl ?? ({} as TTL)).map(
-        ([type, ttl]) => [v.id, ttl, type as TTLKeys] as const
-      )
+        ([type, ttl]) => [v.id, ttl, type as TTLKeys] as const,
+      ),
     )) {
     const asset = assetsWithTTLs[assetId];
 
@@ -112,7 +112,7 @@ export function upcomingTasks(
         assetId: Number(assetId),
         instant,
         type: type as TTLKeys,
-      }))
+      })),
     )
     .sort((a, b) => Temporal.Instant.compare(a.instant, b.instant));
 }
@@ -120,16 +120,16 @@ export function upcomingTasks(
 function filterAssetsWithTTLs(assets: AssetMap): AssetMap {
   return Object.fromEntries(
     Object.entries(assets).filter(
-      ([id, { ttl }]) => ttl && Object.values(ttl).some((value) => value)
-    )
+      ([id, { ttl }]) => ttl && Object.values(ttl).some((value) => value),
+    ),
   );
 }
 
 function nonDecomissionnedAssets(assets: AssetMap): AssetMap {
   return Object.fromEntries(
     Object.entries(assets).filter(
-      ([id, { decomissionDate }]) => !decomissionDate
-    )
+      ([id, { decomissionDate }]) => !decomissionDate,
+    ),
   );
 }
 
@@ -150,7 +150,7 @@ function stillValidLogEntries({
         return (
           Temporal.Instant.compare(
             ttlExpiry(date, assetTTL),
-            cutoffDate || Temporal.Now.instant()
+            cutoffDate || Temporal.Now.instant(),
           ) === 1
         );
       } else {
@@ -164,11 +164,11 @@ function stillValidLogEntries({
 
 function ttlExpiry(
   date: Temporal.Instant,
-  ttl: number | string
+  ttl: number | string,
 ): Temporal.Instant {
   return date.add(
     Temporal.Duration.from({
       milliseconds: typeof ttl === "number" ? ttl : ms(ttl),
-    })
+    }),
   );
 }

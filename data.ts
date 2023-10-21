@@ -50,7 +50,7 @@ export const assets = ref<Record<number, Asset>>(
       [1, 2, 3, 4, 5, 6, 7, 8].flatMap((unit) => [
         {
           acquisitionDate: Temporal.Instant.from(
-            `2011-${String(unit).padStart(2, "0")}-01T00:00:00Z`
+            `2011-${String(unit).padStart(2, "0")}-01T00:00:00Z`,
           ),
           id: unit * 10,
           name: "Front Balcony Door",
@@ -59,7 +59,7 @@ export const assets = ref<Record<number, Asset>>(
         },
         {
           acquisitionDate: Temporal.Instant.from(
-            `2011-${String(unit).padStart(2, "0")}-01T00:00:00Z`
+            `2011-${String(unit).padStart(2, "0")}-01T00:00:00Z`,
           ),
           id: unit * 10 + 1,
           name: "Back Balcony Door",
@@ -68,7 +68,7 @@ export const assets = ref<Record<number, Asset>>(
         },
         {
           acquisitionDate: Temporal.Instant.from(
-            `2013-${String(unit).padStart(2, "0")}-01T00:00:00Z`
+            `2013-${String(unit).padStart(2, "0")}-01T00:00:00Z`,
           ),
           id: unit * 10 + 2,
           name: "Smoke Detector",
@@ -77,17 +77,17 @@ export const assets = ref<Record<number, Asset>>(
         },
         {
           acquisitionDate: Temporal.Instant.from(
-            `2022-${String(unit).padStart(2, "0")}-01T00:00:00Z`
+            `2022-${String(unit).padStart(2, "0")}-01T00:00:00Z`,
           ),
           id: unit * 10 + 3,
           name: "Water Heater",
           ttl: { lifetime: ms("10y") },
           unit,
         },
-      ]) as Asset[]
+      ]) as Asset[],
     ),
-    "id"
-  )
+    "id",
+  ),
 );
 
 export const actionTypes: ActionType[] = [
