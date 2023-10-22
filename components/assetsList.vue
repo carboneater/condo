@@ -1,6 +1,6 @@
 <template>
   <div class="w-fit">
-    <div class="justify-between w-fit">
+    <div class="flex justify-between w-fit">
       <h2 class="font-bold pt-1.5 w-fit">Assets List</h2>
       <button
         class="border border-emerald-600 text-emerald-600 px-1.5 rounded-md"

@@ -3,8 +3,9 @@
 </template>
 
 <script setup lang="ts">
+import type { Asset } from "~/schema";
 import { assets } from "../data";
-function onNewAsset(asset: { name: string; id: number; unit?: number }) {
+function onNewAsset(asset: Asset) {
   assets.value[asset.id] = asset;
 }
 </script>

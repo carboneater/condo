@@ -7,7 +7,7 @@
     />
     <log
       :actionTypes="actionTypes"
-      :assets="Object.values(assets)"
+      :assets="assets"
       class="w-fit"
       :logs="logs"
     />
