@@ -1,5 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
-import { ActionType } from "../schema";
+import type { ActionType } from "../schema";
 import { getActionTypeEmoji, instantToISODateString } from "../shared";
 import { describe, expect, test } from "vitest";
 
