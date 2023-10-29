@@ -5,6 +5,7 @@
       <thead>
         <th></th>
         <th>Asset</th>
+        <th>Unit</th>
         <th>Due Date</th>
         <th></th>
       </thead>
@@ -16,11 +17,8 @@
         <td :title="entry.type">
           {{ getActionTypeEmoji(entry.type) }}
         </td>
-        <td>
-          {{ assets[entry.assetId].name }} ({{
-            assets[entry.assetId].unit ?? "Shared"
-          }})
-        </td>
+        <td>{{ assets[entry.assetId].name }}</td>
+        <td>{{ assets[entry.assetId].unit ?? "Shared" }}</td>
         <td>{{ instantToISODateString(entry.instant) }}</td>
         <td>
           <button
@@ -68,7 +66,7 @@ function openSeeded(seed?: Partial<Omit<LogEntry, "date">>) {
       onCancel() {
         close();
       },
-      onNew(log: LogEntry) {
+      onNewLog(log: LogEntry) {
         close();
         console.log(log);
         logs.value.push(log);

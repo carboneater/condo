@@ -16,7 +16,10 @@
       <div>
         <label>Asset</label>
         <select v-model.number="entry.assetId">
-          <option v-for="asset in props.assets.values()" :value="asset.id">
+          <option
+            v-for="asset in Object.values(props.assets)"
+            :value="asset.id"
+          >
             {{ getAssetString(asset) }}
           </option>
         </select>
@@ -29,7 +32,7 @@
     <div class="flex flex-row justify-between">
       <button
         class="mt-1 ml-auto px-2 border border-amber-600 rounded-lg"
-        @click="emit('new', toLogEntry(entry))"
+        @click="handleNewLog(entry)"
       >
         Create
       </button>
@@ -49,10 +52,10 @@ import type { ActionType, Asset, LogEntry } from "~/schema";
 import { getActionTypeEmoji, instantFromISODateString } from "../shared";
 import NewAsset from "./newAsset.vue";
 
-const emit = defineEmits(["cancel", "new"]);
+const emit = defineEmits(["cancel", "newLog", "newAsset", "revokeAsset"]);
 const props = defineProps<{
   actionTypes: ActionType[];
-  assets: Asset[];
+  assets: Record<number, Asset>;
   seed?: Partial<Omit<LogEntry, "date">>;
 }>();
 const entry: Omit<LogEntry, "date"> & { date: string } = {
@@ -64,6 +67,30 @@ const entry: Omit<LogEntry, "date"> & { date: string } = {
 
 function getAssetString(asset: Asset) {
   return `${asset.name}${asset.unit ? ` (${asset.unit})` : ""}`;
+}
+
+const litetimeTypes: ActionType[] = ["new", "thrash"];
+function handleNewLog({
+  assetId,
+  date,
+  type,
+}: {
+  assetId: number;
+  date: string;
+  type: ActionType;
+}) {
+  const log = toLogEntry({ assetId, date, type });
+
+  if (litetimeTypes.includes(type)) {
+    emit("revokeAsset", { assetId, date });
+    if (type === "new") {
+      emit("newAsset", {
+        ...props.assets[assetId],
+        id: Object.keys(props.assets).length + 1,
+      });
+    }
+  }
+  emit("newLog", log);
 }
 
 function toLogEntry({
