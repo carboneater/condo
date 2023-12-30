@@ -102,7 +102,7 @@ export function upcomingTasks(
       upcomingMap[assetId] = {};
     }
     if (!upcomingMap[assetId][type]) {
-      upcomingMap[assetId][type] == Temporal.Now.instant();
+      upcomingMap[assetId][type] = ttlExpiry(asset.acquisitionDate, ttl);
     }
   }
 
@@ -133,7 +133,7 @@ function nonDecomissionnedAssets(assets: AssetMap): AssetMap {
   );
 }
 
-function stillValidLogEntries({
+export function stillValidLogEntries({
   assets,
   cutoffDate,
   logs,
