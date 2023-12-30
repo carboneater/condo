@@ -3,7 +3,7 @@
     <h2 class="font-bold pt-1.5">Maintenance Logs</h2>
     <table>
       <thead>
-        <th></th>
+        <th>📰</th>
         <th>Asset</th>
         <th>Unit</th>
         <th>Date</th>
