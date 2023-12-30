@@ -82,4 +82,7 @@ describe("Upcoming Tasks", () => {
       ),
     ).to.deep.equal([]);
   });
+
+  test("Maintenance / Repair Resets Inspection");
+  test("Repair Resets Maintenance");
 });
