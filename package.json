@@ -36,5 +36,6 @@
     "lint:prettier": "prettier --check .",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
-  }
+  },
+  "type": "module"
 }
