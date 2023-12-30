@@ -3,7 +3,7 @@ import { mount } from "@vue/test-utils";
 import { Temporal } from "@js-temporal/polyfill";
 
 import Logs from "../components/log.vue";
-import { Asset, LogEntry } from "schema";
+import type { Asset, LogEntry } from "~/schema";
 
 describe("Logs", () => {
   it("is a Vue instance", () => {
