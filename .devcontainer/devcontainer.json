@@ -18,8 +18,7 @@
         "esbenp.prettier-vscode",
         "matijao.vue-nuxt-snippets",
         "ms-azuretools.vscode-docker",
-        "Vue.volar",
-        "Vue.vscode-typescript-vue-plugin"
+        "Vue.volar"
       ]
     }
   }

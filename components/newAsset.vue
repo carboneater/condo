@@ -2,7 +2,10 @@
 import type { Asset } from "~/schema";
 import { Temporal } from "@js-temporal/polyfill";
 defineProps<{
-  seed: Omit<Asset, "acquisitionDate" | "id"> & { acquisitionDate: string };
+  seed: Omit<Asset, "acquisitionDate" | "id"> & {
+    acquisitionDate: string;
+    origin?: boolean;
+  };
 }>();
 </script>
 
@@ -12,6 +15,7 @@ defineProps<{
     <SimpleInput label="Name" type="text" v-model="seed.name" />
     <SimpleInput label="Unit" type="number" v-model.number="seed.unit" />
     <SimpleInput
+      :disabled="seed.origin === true"
       label="Acquisition Date"
       :max="Temporal.Now.plainDateISO()"
       type="date"

@@ -35,11 +35,11 @@
 <script setup lang="ts">
 import { useModal } from "vue-final-modal";
 import newAssetModal from "./newAssetModal.vue";
-import type { Asset } from "~/schema";
+import type { Asset, Building } from "~/schema";
 import { instantToISODateString } from "~/shared";
 
 const emit = defineEmits(["asset", "click"]);
-const props = defineProps<{ assets: Asset[] }>();
+const props = defineProps<{ assets: Asset[]; building: Building }>();
 
 const { open, close } = useModal({
   attrs: {

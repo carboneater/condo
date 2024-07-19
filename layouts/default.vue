@@ -6,6 +6,7 @@
       <NuxtLink class="px-4" to="/assets">⚒️</NuxtLink>
       <NuxtLink class="px-4" to="/logs">🗒️</NuxtLink>
       <NuxtLink class="px-4" to="/upcoming">🗓️</NuxtLink>
+      <NuxtLink class="px-4" to="/settings">⚙️</NuxtLink>
       <!--<NuxtLink class="px-4" to="/providers">Providers</NuxtLink>-->
     </nav>
   </header>

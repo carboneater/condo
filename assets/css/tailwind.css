@@ -1,20 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.theme-light {
-  --background: #f8f8f8;
-  --text: #313131;
-}
-.theme-dark {
-  --background: black;
-  --text: #ccc;
-}
-
 body {
-  @apply bg-black h-full;
-}
-
-input,
-select {
-  @apply bg-gray-950 text-neutral-400;
+  @apply h-full;
 }
