@@ -10,7 +10,7 @@
       <!--<NuxtLink class="px-4" to="/providers">Providers</NuxtLink>-->
     </nav>
   </header>
-  <div class="bg-black text-slate-600">
+  <div class="bg-gray-400 dark:bg-black text-slate-600">
     <slot />
     <ModalsContainer />
   </div>
