@@ -4,9 +4,9 @@
     content-class="flex flex-col max-w-xl mx-4 p-4 bg-black border border-emerald-600 rounded-lg space-y-2 text-emerald-400"
   >
     <NewAsset :seed="newAsset" />
-    <div class=""flex flex-row" justify-between">
+    <div class="flex flex-row justify-between">
       <label>Date</label>
-      <input type="date" v-model="newAsset.acquisitionDate"/>
+      <input type="date" v-model="newAsset.acquisitionDate" />
     </div>
     <div class="flex flex-row justify-between">
       <label>Origin</label>
