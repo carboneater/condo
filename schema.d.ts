@@ -19,6 +19,8 @@ export interface Asset {
 
 export interface Building {
   constructionDate: Temporal.PlainDate;
+  id: number
+  unitsCount: number
 }
 
 export interface LogEntry {
