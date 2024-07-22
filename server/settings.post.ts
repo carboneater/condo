@@ -7,6 +7,6 @@ const SettingsCreate = z.object({
 });
 
 export default defineEventHandler(async (event) => {
-  const body = await readValidatedBody(event, SettingsCreate);
+  const body = await readValidatedBody(event, SettingsCreate.parse);
   return { ...body, id: -1 };
 });
