@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-row justify-between">
+  <div class="flex flex-row items-stretch justify-between">
     <label v-if="label">{{ label }}</label>
     <input
-      class="bg-gray-200 dark:bg-gray-950 field dark:text-neutral-400"
+      class="bg-gray-200 dark:bg-gray-950 field max-w-full min-w-max dark:text-neutral-400"
       @input="
         (event) =>
           $emit('update:modelValue', (event.target as any | null)?.value)

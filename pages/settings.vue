@@ -1,31 +1,30 @@
 <script lang="ts" setup>
 import { Temporal } from "@js-temporal/polyfill";
 
-const model = {
-  constructionDate: Temporal.Now.plainDateISO().toString(),
-  unitsCount: 2,
-};
+const { data: assets } = await useFetch("/bff/assets");
+const { data: settings } = await useFetch("/bff/settings");
 </script>
 
 <template>
   <form>
-    <fieldset>
-      <legend>Buiding</legend>
-      <SimpleInput label="Nom du projet" type="text" v-model="model.name" />
+    <fieldset v-if="settings">
+      <legend>Bâtiment</legend>
+      <SimpleInput label="Nom du projet" type="text" v-model="settings.name" />
       <SimpleInput
         label="Date de Construction"
-        :max="Temporal.Now.plainDateISO()"
+        :max="Temporal.Now.plainDateISO().toString()"
         type="date"
-        v-model="model.constructionDate"
+        v-model="settings.constructionDate"
       />
       <SimpleInput
         label="Nombre d'Unités"
-        :min="0"
+        :min="1"
         type="number"
-        v-model="model.unitsCount"
+        v-model="settings.unitsCount"
       />
     </fieldset>
   </form>
+  <hr />
 </template>
 
 <style lang="css" scoped></style>
