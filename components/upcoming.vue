@@ -3,11 +3,13 @@
     <h2 class="font-bold pt-1.5 w-fit">Upcoming Maintenance</h2>
     <table>
       <thead>
-        <th></th>
-        <th>Asset</th>
-        <th>Unit</th>
-        <th>Due Date</th>
-        <th></th>
+        <tr>
+          <th></th>
+          <th>Asset</th>
+          <th>Unit</th>
+          <th>Due Date</th>
+          <th></th>
+        </tr>
       </thead>
       <tr
         class="border border-solid border-slate-600 rounded-lg"

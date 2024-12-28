@@ -1,5 +1,5 @@
 import ms from "ms";
-import type { ActionType, Asset, Building, LogEntry } from "./schema";
+import type { ActionType, Asset, LogEntry } from "./schema";
 import { Temporal } from "@js-temporal/polyfill";
 
 export const assets = ref<Record<number, Asset>>(
@@ -97,10 +97,6 @@ export const actionTypes: ActionType[] = [
   "repair",
   "thrash",
 ];
-
-export const building: Building = {
-  constructionDate: new Temporal.PlainDate(2011, 10, 1),
-};
 
 export const logs = ref<LogEntry[]>([
   {

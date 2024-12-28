@@ -3,10 +3,12 @@
     <h2 class="font-bold pt-1.5">Maintenance Logs</h2>
     <table>
       <thead>
-        <th>📰</th>
-        <th>Asset</th>
-        <th>Unit</th>
-        <th>Date</th>
+        <tr>
+          <th>📰</th>
+          <th>Asset</th>
+          <th>Unit</th>
+          <th>Date</th>
+        </tr>
       </thead>
       <tr
         class="border border-solid border-slate-600 rounded-lg"

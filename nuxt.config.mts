@@ -2,8 +2,11 @@
 export default defineNuxtConfig({
   css: ["vue-final-modal/style.css"],
   modules: ["@nuxt/devtools", "@nuxtjs/tailwindcss"],
+
   typescript: {
     shim: false,
     strict: true,
   },
+
+  compatibilityDate: "2024-08-27",
 });

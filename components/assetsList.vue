@@ -11,9 +11,11 @@
     </div>
     <table>
       <thead>
-        <th>Asset</th>
-        <th>Unit</th>
-        <th>Acquisition</th>
+        <tr>
+          <th>Asset</th>
+          <th>Unit</th>
+          <th>Acquisition</th>
+        </tr>
       </thead>
       <tr
         class="border border-solid border-slate-600 rounded-lg"

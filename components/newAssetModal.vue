@@ -10,11 +10,7 @@
     </div>
     <div class="flex flex-row justify-between">
       <label>Origin</label>
-      <input
-        type="checkbox"
-        v-model="newAsset.origin"
-        @change="onOrigin(newAsset.origin)"
-      />
+      <input type="checkbox" v-model="newAsset.origin" />
     </div>
 
     <div class="flex flex-row">
@@ -39,7 +35,6 @@ import type { Asset } from "../schema";
 import { VueFinalModal } from "vue-final-modal";
 import { Temporal } from "@js-temporal/polyfill";
 import { instantFromISODateString } from "~/shared";
-import { building } from "~/data";
 
 const emit = defineEmits(["cancel", "create"]);
 const curDate = Temporal.Now.plainDateISO();
@@ -53,33 +48,19 @@ const newAsset = {
 function toAsset({
   acquisitionDate,
   name,
+  origin,
   unit,
 }: {
   acquisitionDate: string;
   name: string;
+  origin: boolean;
   unit: number;
-}): Omit<Asset, "id"> {
+}): Omit<Asset, "id"> & { origin?: boolean } {
   return {
     acquisitionDate: instantFromISODateString(acquisitionDate),
     name,
+    origin,
     unit,
   };
-}
-
-function onOrigin(origin: boolean) {
-  console.log(origin);
-  console.log(newAsset.acquisitionDate);
-  console.log(building.constructionDate.toString());
-  console.log(
-    building.constructionDate
-      .toZonedDateTime(Temporal.Now.zonedDateTimeISO().getTimeZone())
-      .toInstant()
-      .toString()
-  );
-
-  newAsset.acquisitionDate = building.constructionDate
-    .toZonedDateTime(Temporal.Now.zonedDateTimeISO().getTimeZone())
-    .toInstant()
-    .toString();
 }
 </script>

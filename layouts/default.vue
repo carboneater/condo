@@ -13,7 +13,9 @@
     </header>
     <div class="bg-gray-400 dark:bg-black text-slate-600">
       <slot />
-      <ModalsContainer />
+      <div>
+        <ModalsContainer />
+      </div>
     </div>
   </body>
 </template>
